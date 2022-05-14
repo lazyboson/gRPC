@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "./pb/";
+
+message Employee {
+    string name = 1;
+    uint32 salary = 2;
+    string address = 3;
+}
+
+message Employees {
+    repeated Employee employees = 1;
+}
+
+message Response {
+    string message = 1;
+    string error = 2;
+}
+
+service EmployeeAPI {
+    rpc AddEmployee(Employee) returns (Response) {}
+    rpc PopulateEmployees(Employees) returns (Response) {}
+}
+
